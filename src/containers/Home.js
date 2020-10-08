@@ -3,6 +3,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import Header from "../components/Header";
+import WeatherImage from "../components/WeatherImage";
+
 const weather_key = `3fa26f65abf375ee7374a7f1178b63ba`;
 
 function Home() {
@@ -79,15 +81,35 @@ function Home() {
     <div>
       <Header />
       <main className="Home">
-        <h2>Weather in {city}</h2>
+        <h2>
+          Weather in <span>{city}</span>
+        </h2>
         <div className="WeatherInfo">
-          <p>Weather Type: {weatherType} </p>
-          <p>Current Temperature: {currentTemp} </p>
-          <p>High Temperature: {highTemp} </p>
-          <p>Low Temperature: {lowTemp} </p>
-          <p>Cloudiness: {cloudiness} </p>
-          <p>Humidity {humidity} </p>
-          <p>Wind Speed: {windSpeed} </p>
+          <div className="WeatherInfo_Basic">
+            <div className="WeatherInfo_Image">
+              <WeatherImage weatherType={weatherType} />
+            </div>
+            <p className="WeatherInfo_Type"> {weatherType} </p>
+            <h3 className="WeatherInfo_Label">Current Temperature:</h3>
+            <p className="WeatherInfo_Temp"> {currentTemp} </p>
+          </div>
+
+          <div className="WeatherInfo_Advanced">
+            <div className="WeatherInfo_Extra_column">
+              <h3 className="WeatherInfo_Label">High Temperature:</h3>
+              <p>{highTemp}</p>
+              <h3 className="WeatherInfo_Label">Low Temperature:</h3>
+              <p>{lowTemp} </p>
+            </div>
+            <div className="WeatherInfo_Extra_column">
+              <h3 className="WeatherInfo_Label">Cloudiness: </h3>
+              <p>{cloudiness} </p>
+              <h3 className="WeatherInfo_Label">Humidity </h3>
+              <p>{humidity}</p>
+              <h3 className="WeatherInfo_Label">Wind Speed: </h3>
+              <p>{windSpeed}</p>
+            </div>
+          </div>
         </div>
       </main>
     </div>
