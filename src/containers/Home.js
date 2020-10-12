@@ -71,7 +71,6 @@ function Home() {
     highTemp,
     humidity,
     lowTemp,
-    timePercent,
     weatherType,
     windSpeed,
   } = useMemo(() => {
@@ -83,7 +82,6 @@ function Home() {
     let highTemp = "";
     let humidity = "";
     let lowTemp = "";
-    let timePercent = "";
     let weatherType = "";
     let windSpeed = "";
 
@@ -117,7 +115,6 @@ function Home() {
       }
       city_date = `${days[dayOfWeek]}, ${months[month]} ${calendarDate}, ${year}`;
       city_time = `${hour}:${minutes}`;
-      timePercent = hour / 24;
     }
 
     return {
@@ -128,7 +125,6 @@ function Home() {
       highTemp,
       humidity,
       lowTemp,
-      timePercent,
       weatherType,
       windSpeed,
     };
@@ -148,7 +144,7 @@ function Home() {
         <div
           className="WeatherInfo"
           style={{
-            backgroundColor: `rgba(247, 180, 44, ${timePercent})`,
+            backgroundColor: `rgba(169, 169, 169, ${cloudiness})`,
           }}
         >
           <div className="WeatherInfo_Core">
